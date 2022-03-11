@@ -23,7 +23,7 @@ class Index extends React.Component {
   render = () => {
     return (
       <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh"}}>
-        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height:"95vh", maxHeight: "95vh", overflowY: "hidden" }}>
+        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height:"95vh", maxHeight: "95vh", overflowY: "scroll" }}>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
