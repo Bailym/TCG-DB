@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
 import WantList from './wantlist';
 import About from './about';
+import Login from './login';
 import CardList from "./components/cardlist";
 import BottomNav from "./components/bottomNav";
 import { Container } from '@mui/material';
@@ -30,6 +31,7 @@ class Index extends React.Component {
               <Route path="/wantlist" element={<WantList />} />
               <Route path="/about" element={<About />} />
               <Route path="/cardlist" element={<CardList />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </Router>
         </Container>
