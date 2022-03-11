@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Button } from "@mui/material";
 
 class Home extends React.Component{
 
@@ -7,6 +7,7 @@ class Home extends React.Component{
     return (
       <Container>
         <Typography variant="h2" >Home</Typography>
+        <Button href="/cardlist">Base Set</Button>
       </Container>
     );
   }
