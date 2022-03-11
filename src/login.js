@@ -11,10 +11,10 @@ class Login extends React.Component {
         <Typography variant="h2" align="center" paddingBottom="10vh" >Login</Typography>
         <Box style={{ width:"100%"}}>
           <TextField 
-          id="usernameText"
-          label="Username"
+          id="emailText"
+          label="Email"
           defaultValue=""
-          placeholder="username" />
+          placeholder="email" />
           <TextField 
           id="passwordText"
           label="Password"
@@ -22,16 +22,16 @@ class Login extends React.Component {
           placeholder="password"
           />
         </Box>
-        <Button onClick={{}}>Login</Button>
+        <Button onClick={() => this.submitLogin()}>Login</Button>
       </Container>)
   }
 
   //attempt to login. Send request to server 
   submitLogin = async () => {
-    await axios.post('/login', {
-      username: document.getElementById('usernameText').value,
-      password: document.getElementById('passwordText').value
-    })
+    let email = document.getElementById('emailText').value
+    let password = document.getElementById('passwordText').value  //get the values from the form.
+
+    await axios.post(`/api/login/${email}/${password}`)
     .then(function (response) {
       console.log(response);
     })
