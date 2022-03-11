@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
-import Login from './login';
+import WantList from './wantlist';
 import About from './about';
 import BottomNav from "./components/bottomNav";
 import { Container } from '@mui/material';
@@ -22,11 +22,11 @@ class Index extends React.Component {
   render = () => {
     return (
       <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh"}}>
-        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height:"95vh", maxHeight: "95vh", overflowY: "scroll" }}>
+        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height:"95vh", maxHeight: "95vh", overflowY: "hidden" }}>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/wantlist" element={<WantList />} />
               <Route path="/about" element={<About />} />
             </Routes>
           </Router>

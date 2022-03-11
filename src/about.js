@@ -1,12 +1,13 @@
 import React from "react";
+import { Container, Typography } from "@mui/material";
 
 class About extends React.Component{
 
   render = () => {
     return (
-      <div>
-        <h1>About</h1>
-      </div>
+      <Container>
+        <Typography variant="h2" >About</Typography>
+      </Container>
     );
   }
 }
