@@ -35,24 +35,19 @@ app.use(bodyParser.json());
 
 app.post('/api/login/:email/:password', async function (request, response) {
     var email = request.params.email;
-    var password = request.params.password;
-    if (email && password) {
-        //const [results, fields] = await DBPool.query('SELECT * FROM plantdb.user WHERE Email = ? AND Password = ?', [email, password]);
-        //if (results.length > 0) {
-            //request.session.loggedin = true;
-            //request.session.username = email;
-            //request.session.userID = results[0].UserID;
-            //response.send(true);
-        //} else {
-            //response.send(false);
-        //}
+    var password = request.params.password; //get the parameters from the request.
+        const [results, fields] = await DBPool.query('SELECT * FROM tcgdb.user WHERE Email = ? AND Password = ?', [email, password]);   //query the database for the user.
+        if (results.length > 0) {
+            request.session.loggedin = true;    //update session variable with the user's details .
+            request.session.username = email;
+            request.session.userID = results[0].UserID;
+            response.send(true);
+        }
+        else {
+            response.send(false);
+        }
         response.end();
-    }
-    else {
-        response.send(false);
-        response.end();
-    }
-}); 
+    });
 
 /* app.post('/api/register/:email/:password/:firstname/:surname', async function (request, response) {
     var email = request.params.email;

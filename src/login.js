@@ -20,7 +20,7 @@ class Login extends React.Component {
           label="Password"
           defaultValue=""
           placeholder="password"
-          />
+          type="password" />
         </Box>
         <Button onClick={() => this.submitLogin()}>Login</Button>
       </Container>)
