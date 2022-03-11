@@ -7,7 +7,7 @@ class Home extends React.Component{
     return (
       <Container>
         <Typography variant="h2" >Home</Typography>
-        <Button href="/cardlist">Base Set</Button>
+        <Button href="/cardlist?set=base1">Base Set</Button>
       </Container>
     );
   }

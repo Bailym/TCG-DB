@@ -18,15 +18,20 @@ class CardList extends React.Component {
 
 
     componentDidMount = async () => {
+
+        //get the parameters from the url
+        let params = new URLSearchParams(window.location.search);
+        let set = params.get('set');
+
         let newComponents = []  //hold the components generated
         let apiData = []    //the raw api data object
 
         //set headers for axios
         var config = {
             method: 'get',
-            url: 'https://api.pokemontcg.io/v2/cards?q=set.id:base1',
+            url: `https://api.pokemontcg.io/v2/cards?q=set.id:${set}`,
             headers: {
-                'X-Api-Key': 'fd094ea5-9cb1-4a45-bbaa-356ef83d8863'
+                'X-Api-Key': process.env.REACT_APP_TCG_API_KEY
             }
         };
 
