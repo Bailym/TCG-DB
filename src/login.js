@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Button, Box, TextField, Alert } from "@mui/material";
+import { Container, Typography, Button, Box, TextField, Alert, Grid } from "@mui/material";
 var axios = require('axios');
 var sha512 = require('js-sha512');
 
@@ -14,21 +14,29 @@ class Login extends React.Component {
     return (
       <Container>
         <Typography variant="h2" align="center" paddingBottom="5vh" >Login</Typography>
-        <Box style={{ width: "100%" }}>
-          {this.state.errorMessage !== "" ? <Alert severity="error" style={{marginBottom:"1vh"}}>{this.state.errorMessage}</Alert> : null}
-          <TextField
-            id="emailText"
-            label="Email"
-            defaultValue=""
-            placeholder="email" />
-          <TextField
-            id="passwordText"
-            label="Password"
-            defaultValue=""
-            placeholder="password"
-            type="password" />
-        </Box>
-        <Button onClick={() => this.submitLogin()}>Login</Button>
+          {this.state.errorMessage !== "" ? <Alert severity="error" style={{ marginBottom: "1vh" }}>{this.state.errorMessage}</Alert> : null}
+          <Grid
+            container
+            direction={'column'}
+            justify={'center'}
+            alignItems={'center'}
+          >
+            <TextField
+              id="emailText"
+              label="Email"
+              defaultValue=""
+              placeholder="Email"
+              fullWidth
+              style={{marginBottom:"1vh"}}/>
+            <TextField
+              id="passwordText"
+              label="Password"
+              defaultValue=""
+              placeholder="Password"
+              type="password"
+              fullWidth />
+            <Button fullWidth style={{fontSize:"24px"}}> Login </Button>
+          </Grid>
       </Container>)
   }
 
