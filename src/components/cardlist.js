@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, Grid, Item } from '@mui/material';
 var axios = require('axios');
 
 
@@ -45,33 +45,31 @@ class CardList extends React.Component {
                     let card = apiData.data[i]
                     //create a component from each card
                     newComponents.push(
-                        <Card sx={{ display: 'flex' }} key={card.id}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                                <CardContent sx={{ flex: '1 0 auto' }}>
-                                    <Typography component="div" variant="h5">
+                        <Grid item xs={4}>
+                            <Card sx={{ display: 'flex' }} key={card.id}>
+                                <CardContent>
+                                    <Typography variant="h6">
                                         {card.name}
                                     </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    <Typography variant="subtitle1" color="text.secondary">
                                         {card.number}
                                     </Typography>
-                                </CardContent>
-                                <Box sx={{alignItems: 'center', pl: 1, pb: 1 }}>
-                                    <Typography component="div">
+                                    <Typography>
                                         {card.rarity}
                                     </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary" component="div">
+                                    <Typography variant="subtitle1" color="text.secondary">
                                         {card.artist}
                                     </Typography>
-
-                                </Box>
-                            </Box>
-                            <CardMedia
-                                component="img"
-                                sx={{ width: "5vw" }}
-                                alt={card.name}
-                                image={card.images.small}
-                                title={card.name} />
-                        </Card>)
+                                </CardContent>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: "5vw" }}
+                                    alt={card.name}
+                                    image={card.images.small}
+                                    title={card.name} />
+                            </Card>
+                        </Grid>
+                    )
                 }
             })
             .catch(function (error) {
@@ -88,10 +86,13 @@ class CardList extends React.Component {
 
     render = () => {
         return (
-            //render cardComponents in a grid with 3 in each row
+            /* //render cardComponents in a grid with 3 in each row
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '1vw' }}>
                 {this.state.cardComponents}
-            </Box>          
+            </Box> */
+            <Grid container spacing={2} alignItems={"center"}>
+                {this.state.cardComponents}
+            </Grid>
         );
     }
 }
