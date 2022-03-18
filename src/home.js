@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Button } from "@mui/material";
+import { Container, Typography, Button, Grid } from "@mui/material";
 var axios = require('axios');
 
 class Home extends React.Component {
@@ -19,8 +19,13 @@ class Home extends React.Component {
   render = () => {
     return (
       <Container>
-        <Typography variant="h2" >Home</Typography>
-        <Button href="/cardlist?set=base1">Base Set</Button>
+        <Typography variant="h2" align="center" paddingBottom="5vh" >Home</Typography>
+        <Grid
+          container
+          justify={"center"}
+          direction={"column"}>
+          <Button href="/cardlist?set=base1" style={{ fontSize: "2vw" }}>Base Set</Button>
+        </Grid>
       </Container>
     );
   }

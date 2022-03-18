@@ -35,7 +35,7 @@ class Login extends React.Component {
               placeholder="Password"
               type="password"
               fullWidth />
-            <Button fullWidth style={{fontSize:"24px"}}> Login </Button>
+            <Button fullWidth style={{fontSize:"24px"}} onClick = {() => this.submitLogin()}> Login </Button>
           </Grid>
       </Container>)
   }

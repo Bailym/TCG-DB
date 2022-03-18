@@ -34,7 +34,7 @@ class About extends React.Component {
   render = () => {
     return (
       <Container>
-        <Typography variant="h2" >About</Typography>
+        <Typography variant="h2" align="center" paddingBottom="5vh" >About</Typography>
         <Box style={{ width: '95%', bgcolor: 'background.paper', margin:"auto" }}>
             <List>
               <ListItem>

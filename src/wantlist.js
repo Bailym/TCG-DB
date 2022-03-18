@@ -19,7 +19,7 @@ class WantList extends React.Component{
   render = () => {
     return (
       <Container>
-        <Typography variant="h2" >Want List</Typography>
+        <Typography variant="h2" align="center" paddingBottom="5vh" >Want List</Typography>
       </Container>
     );
   }
