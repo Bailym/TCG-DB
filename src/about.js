@@ -36,7 +36,6 @@ class About extends React.Component {
       <Container>
         <Typography variant="h2" >About</Typography>
         <Box style={{ width: '95%', bgcolor: 'background.paper', margin:"auto" }}>
-          <nav aria-label="main mailbox folders">
             <List>
               <ListItem>
                 <ListItemButton style={{textAlign:"center"}} onClick={() => this.onSignOut()}>
@@ -45,7 +44,6 @@ class About extends React.Component {
                 </ListItemButton>
               </ListItem>
             </List>
-          </nav>
         </Box>
 
       </Container>
