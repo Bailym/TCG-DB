@@ -79,7 +79,8 @@ app.post('/api/login/:email/:password', async function (request, response) {
 * Therefore if it contains a value, someone is logged in.
 * If it does not contain any values (null/false) then the user is not logged in.
 */
-/* app.get('/api/checkuser', function (req, res) {
+
+app.get('/api/checkuser', function (req, res) {
     if (req.session.loggedin === true && req.session.username !== null) {
         res.send(req.session);
     }
@@ -89,7 +90,7 @@ app.post('/api/login/:email/:password', async function (request, response) {
 });
 
 //checks the type of the logged in user
-app.get('/api/usertype', async function (req, res) {
+/*app.get('/api/usertype', async function (req, res) {
     var email = req.session.username;
 
     const [results, fields] = await DBPool.query('SELECT Type FROM plantdb.user WHERE Email = ?;', [email]);
