@@ -3,20 +3,20 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { Button, Typography, Box, Grid, Item } from '@mui/material';
+import { Button, Typography, DialogTitle, Grid, Dialog, DialogContent, DialogActions } from '@mui/material';
 var axios = require('axios');
 
 
 
 class CardComponent extends React.Component {
-    constructor(props) {
-        super(props);;
-    }
 
     state = {
         cardDetails: null,
-        card: []
+        card: [],
+        openModal: false
     }
+
+
 
     componentDidMount = async () => {
         let apiData = []    //the raw api data object
@@ -46,11 +46,24 @@ class CardComponent extends React.Component {
             });
     }
 
+    //open the modal by changing the state
+    openModal = () => {
+        this.setState({
+            openModal: true
+        })
+    }
+
+    //close the modal by changing the state
+    closeModal = () => {
+        this.setState({
+            openModal: false
+        })
+    }
 
     render = () => {
         return (
             <Grid item xs={4}>
-                <Card sx={{ display: 'flex' }} key={this.state.card.id}>
+                <Card sx={{ display: 'flex' }} key={this.state.card.id} onClick={() => this.openModal()}>
                     <CardContent>
                         <Typography variant="h6">
                             {this.state.card.name}
@@ -72,7 +85,18 @@ class CardComponent extends React.Component {
                         image={this.state.card.images.small}
                         title={this.state.card.name} /> : null}
                 </Card>
-            </Grid>
+                <Dialog open={this.state.openModal} onClose={() => this.closeModal()}>
+                    <DialogTitle>Card Details</DialogTitle>
+                    <DialogContent>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            {this.state.card.name}
+                        </Typography>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button autoFocus onClick={this.closeModal}>Back</Button>
+                    </DialogActions>
+                </Dialog>
+            </Grid >
         );
     }
 }
