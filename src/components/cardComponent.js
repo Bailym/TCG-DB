@@ -125,6 +125,48 @@ class CardComponent extends React.Component {
                                 <Tab label="Prices" />
                             </Tabs>
                             <TabPanel value={"0"} index={0}>
+                                <List>
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="body1">{"Card Type: " + this.state.card.supertype}</Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="body1">{"HP: " + this.state.card.hp}</Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="body1">{"Description:  " + this.state.card.flavorText}</Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            {this.state.card.types ? <Typography variant="body1">{"Type: " + this.state.card.types[0]}</Typography> : null}
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="body1">{"Evolves From: " + this.state.card.evolvesFrom}</Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            {this.state.card.subtypes ? <Typography variant="body1">{"Sub Type: " + this.state.card.subtypes[0]}</Typography> : null}
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            {this.state.card.level ? <Typography variant="body1">{"Level: " + this.state.card.level}</Typography> : <Typography variant="body1">{"Level: N/A"}</Typography>}
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            <Typography variant="body1">{"Rarity: " + this.state.card.rarity}</Typography>
+                                        </ListItemText>
+                                    </ListItem>
+                                </List>
 
                             </TabPanel>
                             <TabPanel value={"1"} index={1}>
