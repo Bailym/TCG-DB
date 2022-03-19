@@ -4,6 +4,10 @@ var axios = require('axios');
 
 class Home extends React.Component {
 
+  state = {
+    buttonComponents: []
+  }
+
   componentDidMount = async () => {
     await axios.get('/api/checkuser')  //call the server endpoint
       .then(async response => {
@@ -14,6 +18,45 @@ class Home extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
+
+    let tempComponents = [];
+    let apiData = [];
+
+    //set headers for axios
+    var config = {
+      method: 'get',
+      url: `https://api.pokemontcg.io/v2/sets`,
+      headers: {
+        'X-Api-Key': process.env.REACT_APP_TCG_API_KEY
+      }
+    };
+
+    //make axios request for this card set
+    await axios(config)
+      .then(async response => {
+        //get the api data
+        apiData = response.data
+        let currentSetID = null
+        let currentSetName = null
+
+        //create a button for each set
+        for (let i = 0; i < apiData.data.length; i++) {
+          currentSetID = apiData.data[i].id
+          currentSetName = apiData.data[i].name
+          tempComponents.push(
+            <Button fullwidth key={currentSetID} href={`/cardlist?set=${currentSetID}`} style={{ fontSize: "2vw", textAlign:"center"}}>{currentSetName}</Button>
+          ) //create a button. 
+        }
+
+        //update the state with the new components
+        this.setState({
+          buttonComponents: tempComponents
+        })
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render = () => {
@@ -24,7 +67,7 @@ class Home extends React.Component {
           container
           justify={"center"}
           direction={"column"}>
-          <Button href="/cardlist?set=base1" style={{ fontSize: "2vw" }}>Base Set</Button>
+          {this.state.buttonComponents}
         </Grid>
       </Container>
     );
