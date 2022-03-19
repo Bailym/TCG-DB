@@ -1,4 +1,5 @@
 import * as React from 'react';
+import CardComponent from './cardComponent';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -18,7 +19,6 @@ class CardList extends React.Component {
 
 
     componentDidMount = async () => {
-
         //get the parameters from the url
         let params = new URLSearchParams(window.location.search);
         let set = params.get('set');
@@ -45,30 +45,7 @@ class CardList extends React.Component {
                     let card = apiData.data[i]
                     //create a component from each card
                     newComponents.push(
-                        <Grid item xs={4}>
-                            <Card sx={{ display: 'flex' }} key={card.id}>
-                                <CardContent>
-                                    <Typography variant="h6">
-                                        {card.name}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary">
-                                        {card.number}
-                                    </Typography>
-                                    <Typography>
-                                        {card.rarity}
-                                    </Typography>
-                                    <Typography variant="subtitle1" color="text.secondary">
-                                        {card.artist}
-                                    </Typography>
-                                </CardContent>
-                                <CardMedia
-                                    component="img"
-                                    sx={{ width: "5vw" }}
-                                    alt={card.name}
-                                    image={card.images.small}
-                                    title={card.name} />
-                            </Card>
-                        </Grid>
+                        <CardComponent key={card.id} ApiID={card.id} userID={null} cardID={null} />
                     )
                 }
             })
@@ -80,16 +57,11 @@ class CardList extends React.Component {
         this.setState({
             cardComponents: newComponents
         })
-
     }
 
 
     render = () => {
         return (
-            /* //render cardComponents in a grid with 3 in each row
-            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridGap: '1vw' }}>
-                {this.state.cardComponents}
-            </Box> */
             <Grid container spacing={2} alignItems={"center"}>
                 {this.state.cardComponents}
             </Grid>
