@@ -23,8 +23,8 @@ class Index extends React.Component {
   }
   render = () => {
     return (
-      <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh"}}>
-        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff"}}>
+      <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh", display: "flex", flexDirection: "column" }}>
+        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -35,12 +35,12 @@ class Index extends React.Component {
             </Routes>
           </Router>
         </Container>
-        <Container id="navContainer" maxWidth="md" disableGutters={true} style={{position:"fixed", bottom:"0px" }}>
+        <Container id="navContainer" maxWidth="md" disableGutters={true} style={{ marginTop: "auto" }}>
           <BottomNav />
         </Container>
       </Box>)
   }
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'));  
+ReactDOM.render(<Index />, document.getElementById('root'));
 
