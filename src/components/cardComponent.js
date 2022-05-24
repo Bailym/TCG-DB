@@ -12,11 +12,11 @@ var axios = require('axios');
 class CardComponent extends React.Component {
 
     state = {
-        cardDetails: null,
         card: [],
         openModal: false,
         currentTab: 0,
         attacksComponents: [],
+        priceComponents: [],
     }
 
 
@@ -33,34 +33,16 @@ class CardComponent extends React.Component {
             }
         };
 
-        //make axios request for this card set
+        //make axios request for this card \
         await axios(config)
             .then(async (response) => {
                 apiData = response.data
                 //the individual card in the set
                 let card = apiData.data
 
-                //create a list item for each attack. Create an avatar for each attack cost.
-                let attacksComponents = []
-                attacksComponents = card.attacks.map(attack =>
-                    <ListItem key={attack.name} style={{ border: "2px solid #000", marginBottom: "1vh" }}>
-                        <ListItemAvatar>
-                            {attack.cost.map((cost, i) =>
-                                <Avatar key={i}>
-                                    <Typography>{cost}</Typography>
-                                </Avatar>)}
-                        </ListItemAvatar>
-                        <ListItemText>
-                            <Typography variant="body1">{attack.name}</Typography>
-                            <Typography variant="body1">{attack.damage}</Typography>
-                            <Typography variant="body1">{attack.text}</Typography>
-                        </ListItemText>
-                    </ListItem>
-                )
                 //update the state with the new component
                 this.setState({
                     card: card,
-                    attacksComponents: attacksComponents,
                 })
             })
             .catch(function (error) {
@@ -74,6 +56,57 @@ class CardComponent extends React.Component {
         this.setState({
             openModal: true
         })
+
+        //create a list item for each attack. Create an avatar for each attack cost.
+        let attacksComponents = []
+        attacksComponents = this.state.card.attacks.map(attack =>
+            <ListItem key={attack.name} style={{ border: "2px solid #000", marginBottom: "1vh" }}>
+                <ListItemAvatar>
+                    {attack.cost.map((cost, i) =>
+                        <Avatar key={i}>
+                            <Typography>{cost}</Typography>
+                        </Avatar>)}
+                </ListItemAvatar>
+                <ListItemText>
+                    <Typography variant="body1">{attack.name}</Typography>
+                    <Typography variant="body1">{attack.damage}</Typography>
+                    <Typography variant="body1">{attack.text}</Typography>
+                </ListItemText>
+            </ListItem>
+        )
+
+        let priceComponents = []
+        let cardPrices = this.state.card.cardmarket.prices
+        priceComponents.push(
+            <ListItem key={this.state.card.id + "avg"}>
+                <ListItemText>
+                    <Typography variant="body1">{"Average Price: $" + cardPrices.averageSellPrice}</Typography>
+                </ListItemText>
+            </ListItem>,
+            <ListItem key={this.state.card.id + "avg24"}>
+                <ListItemText>
+                    <Typography variant="body1">{"Average 24hr: $" + cardPrices.avg1}</Typography>
+                </ListItemText>
+            </ListItem>,
+            <ListItem key={this.state.card.id + "avg7"}>
+                <ListItemText>
+                    <Typography variant="body1">{"Average 7 Days: $" + cardPrices.avg7}</Typography>
+                </ListItemText>
+            </ListItem>,
+            <ListItem key={this.state.card.id + "updatedat"}>
+            <ListItemText>
+                <Typography variant="body1">{"Updated on: " + this.state.card.cardmarket.updatedAt}</Typography>
+            </ListItemText>
+        </ListItem>
+        )
+
+
+        this.setState({
+            attacksComponents: attacksComponents,
+            priceComponents: priceComponents,
+        })
+
+
     }
 
     //close the modal by changing the state
@@ -174,7 +207,11 @@ class CardComponent extends React.Component {
                                     {this.state.attacksComponents}
                                 </List>
                             </TabPanel>
-                            <TabPanel value={"2"} index={2}>3</TabPanel>
+                            <TabPanel value={"2"} index={2}>
+                                <List>
+                                    {this.state.priceComponents}
+                                </List>
+                            </TabPanel>
                         </TabContext>
                     </DialogContent>
                     <DialogActions>
