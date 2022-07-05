@@ -112,6 +112,6 @@ app.get('/api/logout', function (req, res) {
 }
 );
 
-app.listen(port, () => console.log(`Listening on port: ${port}`))
+app.listen(port, () => console.log(`Listening on port: ${process.env.PORT}`))
 
 module.exports.app = app;
