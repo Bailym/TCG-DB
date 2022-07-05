@@ -40,4 +40,4 @@ Card Details Window
 ![Modal](https://github.com/Bailym/TCG-DB/blob/main/images/Modal.png?raw=true)
 
 Prices
-![Prices](![Prices.png](https://github.com/Bailym/TCG-DB/blob/main/images/Prices.png?raw=true))
+![Prices](https://github.com/Bailym/TCG-DB/blob/main/images/Prices.png?raw=true)
