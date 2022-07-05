@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3001
 var DBPool = require('./database');
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.post('/api/login/:email/:password', async function (request, response) {
     var email = request.params.email;
     var password = request.params.password; //get the parameters from the request.
-    const [results, fields] = await DBPool.query('SELECT * FROM tcgdb.user WHERE Email = ? AND Password = ?', [email, password]);   //query the database for the user.
+    const [results, fields] = await DBPool.query('SELECT * FROM user WHERE Email = ? AND Password = ?', [email, password]);   //query the database for the user.
     if (results.length > 0) {
         request.session.loggedin = true;    //update session variable with the user's details .
         request.session.username = email;
@@ -112,6 +112,6 @@ app.get('/api/logout', function (req, res) {
 }
 );
 
-app.listen(port, () => console.log(`Listening on port: ${process.env.PORT}`))
+app.listen(port, () => console.log(`Listening on port: ${port}`))
 
 module.exports.app = app;
