@@ -1,4 +1,7 @@
 # TCG DB
+
+**Live Here**: https://bailym-tcgdb.herokuapp.com/
+
 **Pokemon Trading Card Game Database**
 
 Personal project I started which uses the pokemontgc API to show card lists, details and prices.
