@@ -5,7 +5,6 @@ var axios = require('axios');
 
 
 function CardList() {
-    const [cards, setCards] = React.useState([]);
     const [cardComponents, setCardComponents] = React.useState([]);
 
     //on component mount
@@ -15,14 +14,9 @@ function CardList() {
         let set = params.get('set');
         const setData = require("../../../backend/cache/" + set)
 
-        console.log(setData.data)
-
-
-
         let newComponents = setData.data.map((card) => 
-            <CardComponent key={card.id} ApiID={card.id} />
+            <CardComponent key={card.id} ApiID={card.id} SetID={set} />
         ) 
-        console.log(newComponents)
         setCardComponents(newComponents)
     }, [])
 
