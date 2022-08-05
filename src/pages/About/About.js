@@ -6,7 +6,7 @@ var axios = require('axios');
 class About extends React.Component {
 
   componentDidMount = async () => {
-    await axios.get('/api/checkuser')  //call the server endpoint
+    /* await axios.get('/api/checkuser')  //call the server endpoint
       .then(async response => {
         if (response.data === false) {   //if false redirect to login (you are not logged in.)
           window.location.href = "/login";
@@ -14,7 +14,7 @@ class About extends React.Component {
       })
       .catch(function (error) {
         console.log(error);
-      })
+      }) */
   }
 
   onSignOut = async () => {

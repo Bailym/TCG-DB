@@ -27,7 +27,7 @@ class Index extends React.Component {
               <Route path="/wantlist" element={<WantList />} />
               <Route path="/about" element={<About />} />
               <Route path="/cardlist" element={<CardList />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Home />} />
             </Routes>
           </BrowserRouter>
           
