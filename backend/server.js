@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 const express = require('express')
 const app = express()
 const port = 3001
@@ -5,8 +6,9 @@ var DBPool = require('./database');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
+
 app.use(session({
-    secret: 'secret',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true
 }));
@@ -15,13 +17,9 @@ app.use(bodyParser.json());
 
 //controllers
 
-//var userController = require("./controllers/userController");
+
 
 //routing
-
-//User Functions
-//app.get('/api/users', userController.getUser);  //retrieves all users
-//app.get('/api/users/:id', userController.getUserID);  //retrieves specific user by id
 
 
 //Login/Session management  
@@ -49,29 +47,6 @@ app.post('/api/login/:email/:password', async function (request, response) {
     response.end();
 });
 
-/* app.post('/api/register/:email/:password/:firstname/:surname', async function (request, response) {
-    var email = request.params.email;
-    var password = request.params.password;
-    var firstName = request.params.firstname;
-    var surname = request.params.surname;
-    var type = "User"
-    if (email && password && firstName && surname) {
-
-        try {
-            const [results, fields] = await DBPool.query(`INSERT INTO plantdb.user (FirstName, Surname, Email, Password, Type) VALUES (?, ?, ?, ?, ?);`, [firstName, surname, email, password, type]);
-            
-            const newUserID = await DBPool.query("SELECT LAST_INSERT_ID()")
-
-            response.send({"LastID": newUserID[0][0][`LAST_INSERT_ID()`]})
-            response.sendStatus(200);
-        }
-        catch (err) {
-            response.send(err)
-        }
-
-
-    }
-}); */
 
 
 /*
@@ -89,18 +64,6 @@ app.get('/api/checkuser', function (req, res) {
     }
 });
 
-//checks the type of the logged in user
-/*app.get('/api/usertype', async function (req, res) {
-    var email = req.session.username;
-
-    const [results, fields] = await DBPool.query('SELECT Type FROM plantdb.user WHERE Email = ?;', [email]);
-    try {
-        res.send(results[0].Type);
-    }
-    catch (error) {
-        console.log(error);
-    }
-}); */
 
 /*
 * Resets the contents of the session variable to indicate the user is not logged in.
@@ -112,6 +75,8 @@ app.get('/api/logout', function (req, res) {
 }
 );
 
-app.listen(port, () => console.log(`Listening on port: ${port}`))
+app.listen(port, async () => {
+    console.log(`Listening on port: ${port}`)
+})
 
 module.exports.app = app;
