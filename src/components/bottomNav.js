@@ -41,9 +41,9 @@ class BottomNav extends React.Component {
           this.setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Collection" icon={<HomeIcon />} href="/" />
-        <BottomNavigationAction label="Want List" icon={<FavoriteIcon />} href="/wantlist" />
-        <BottomNavigationAction label="About" icon={<InfoIcon />} href="/about" />
+        <BottomNavigationAction label="Collection" icon={<HomeIcon />} href={process.env.PUBLIC_URL + "/"} />
+        <BottomNavigationAction label="Want List" icon={<FavoriteIcon />} href={process.env.PUBLIC_URL + "/wantlist"} />
+        <BottomNavigationAction label="About" icon={<InfoIcon />} href={process.env.PUBLIC_URL + "/about"} />
       </BottomNavigation>
     );
   }

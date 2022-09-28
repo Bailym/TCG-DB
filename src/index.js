@@ -21,7 +21,7 @@ class Index extends React.Component {
       <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <BottomNav />
         <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
-          <Router>
+          <Router basename={process.env.PUBLIC_URL}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/wantlist" element={<WantList />} />
