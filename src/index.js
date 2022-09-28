@@ -23,7 +23,7 @@ class Index extends React.Component {
         <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
           <Router basename={process.env.PUBLIC_URL}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<WantList />} />
               <Route path="/wantlist" element={<WantList />} />
               <Route path="/about" element={<About />} />
               <Route path="/cardlist" element={<CardList />} />
