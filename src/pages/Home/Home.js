@@ -44,7 +44,7 @@ class Home extends React.Component {
           currentSetID = apiData.data[i].id
           currentSetName = apiData.data[i].name
           tempComponents.push(
-            <Button fullwidth key={currentSetID} href={`/cardlist?set=${currentSetID}`} style={{ fontSize: "2vw", textAlign:"center"}}>{currentSetName}</Button>
+            <Button fullwidth key={currentSetID} href={process.env.PUBLIC_URL + `/cardlist?set=${currentSetID}`} style={{ fontSize: "2vw", textAlign:"center"}}>{currentSetName}</Button>
           ) //create a button. 
         }
 

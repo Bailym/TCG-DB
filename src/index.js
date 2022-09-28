@@ -30,7 +30,6 @@ class Index extends React.Component {
               <Route path="/login" element={<Home />} />
             </Routes>
           </Router>
-          
         </Container>
       </Box>)
   }
