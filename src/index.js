@@ -4,7 +4,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import WantList from './pages/WantList/WantList';
 import About from './pages/About/About.js';
@@ -21,7 +21,7 @@ class Index extends React.Component {
       <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <BottomNav />
         <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
-          <BrowserRouter>
+          <Router>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/wantlist" element={<WantList />} />
@@ -29,10 +29,9 @@ class Index extends React.Component {
               <Route path="/cardlist" element={<CardList />} />
               <Route path="/login" element={<Home />} />
             </Routes>
-          </BrowserRouter>
+          </Router>
           
         </Container>
-
       </Box>)
   }
 }
