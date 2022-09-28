@@ -6,7 +6,6 @@ var DBPool = require('./database');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 
-
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
@@ -73,7 +72,7 @@ app.get('/api/logout', function (req, res) {
     req.session.username = null;
     res.sendStatus(200);
 }
-);
+); 
 
 app.listen(port, async () => {
     console.log(`Listening on port: ${port}`)
