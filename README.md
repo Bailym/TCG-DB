@@ -1,14 +1,13 @@
 # TCG DB
 
-**Live Here**: https://bailym-tcgdb.herokuapp.com/
+**Live Here**: https://bailym.github.io/TCG-DB/
 
 **Pokemon Trading Card Game Database**
 
 Personal project I started which uses the pokemontgc API to show card lists, details and prices.
-I was planning to develop this into a full collection tracker with wishlistsand price tracking etc. but lost interest.
 
 **Key Details**
-- React + Node + Express
+- React
 - Material UI 
 - PokemonTCG API
 
@@ -17,12 +16,10 @@ I was planning to develop this into a full collection tracker with wishlistsand 
 - Key card details, moves and prices from TCG API
 
 **Possible Future Ideas**
- - Browser cahcing to improve load time and reduce API calls.
  - Mark cards as 'collected'.
  - View your collection
  - Idenitfy a "wishlist' of cards you want to buy/track
  - Price tracking for specific cards 
- 
 
 **Screenshots**
 
