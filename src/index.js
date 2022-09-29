@@ -9,13 +9,14 @@ import Home from './pages/Home/Home';
 import CardList from "./pages/CardList/CardList";
 import { Container } from '@mui/material';
 import { Box } from '@mui/material';
+import './index.css';
 
 class Index extends React.Component {
 
   render = () => {
     return (
-      <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh", display: "flex", flexDirection: "column" }}>
-        <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
+      <Box id="appContainer">
+        <Container id="contentContainer" maxWidth="md" >
           <Router >
             <Routes>
               <Route exact path="/" element={<Home />} />

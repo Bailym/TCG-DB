@@ -1,0 +1,9 @@
+#appContainer {
+    background-color: #d0d3d9;
+}
+
+#contentContainer {
+    margin: auto;
+    background-color: #fff;
+    overflow-y: scroll;
+}
