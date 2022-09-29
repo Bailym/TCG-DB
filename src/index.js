@@ -21,13 +21,13 @@ class Index extends React.Component {
       <Box id="appContainer" style={{ backgroundColor: "#d0d3d9", maxHeight: "100vh", display: "flex", flexDirection: "column" }}>
         <BottomNav />
         <Container id="contentContainer" maxWidth="md" style={{ margin: "auto", backgroundColor: "#fff", height: "100vh", overflowY: "scroll" }}>
-          <Router baseline={"/"}>
+          <Router >
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/wantlist" element={<WantList />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/cardlist" element={<CardList />} />
-              <Route path="/login" element={<Home />} />
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/wantlist" element={<WantList />} />
+              <Route exact path="/about" element={<About />} />
+              <Route exact path="/cardlist" element={<CardList />} />
+              <Route exact path="/login" element={<Home />} />
             </Routes>
           </Router>
         </Container>
