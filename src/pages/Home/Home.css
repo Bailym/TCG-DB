@@ -1,0 +1,9 @@
+#setButton {
+    font-size: clamp(2rem, 2vw, 10rem); 
+    text-align: center;
+}
+
+#pageHeader {
+    text-align: center;
+    padding: 0 0 2rem 0;
+}
