@@ -22,10 +22,6 @@ Personal project I started which uses the pokemontgc API to show card lists, det
  - Price tracking for specific cards 
 
 **Screenshots**
-
-Login
-
-![Login](https://github.com/Bailym/TCG-DB/blob/main/images/Login.png?raw=true)
  
  Home Screen
  
