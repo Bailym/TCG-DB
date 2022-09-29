@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Button, Typography, DialogTitle, Grid, Dialog, DialogContent, DialogActions, Tabs, Tab, Box, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@mui/material';
 import { TabPanel, TabContext } from '@mui/lab';
+import "./cardComponent.css"
 var axios = require('axios');
 
 function CardComponent(props) {
@@ -92,24 +93,24 @@ function CardComponent(props) {
 
     return (
         <Grid item xs={4}>
-            <Card sx={{ display: 'flex' }} key={card.id} onClick={() => openModal()}>
-                <CardContent>
-                    <Typography variant="h6">
+            <Card id="cardContainer" key={card.id} onClick={() => openModal()}>
+                <CardContent id="cardContent">
+                    <Typography variant="h6" id="cardName">
                         {card.name}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography variant="subtitle1" color="text.secondary" id="cardNumber">
                         {card.number}
                     </Typography>
-                    <Typography>
+                    <Typography id="cardRarity">
                         {card.rarity}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
+                    <Typography variant="subtitle1" color="text.secondary" id="cardArtist">
                         {card.artist}
                     </Typography>
                 </CardContent>
                 {card.images ? <CardMedia
                     component="img"
-                    sx={{ width: "5vw" }}
+                    id="cardImg"
                     alt={card.name}
                     image={card.images.small}
                     title={card.name} /> : null}
@@ -118,7 +119,7 @@ function CardComponent(props) {
                 <DialogTitle>{card.name + " - " + card.number}</DialogTitle>
                 <DialogContent>
                     <TabContext value={currentTab.toString()}>
-                        <Tabs value={currentTab} onChange={(event, value) => onTabChange(event, value)} aria-label="basic tabs example">
+                        <Tabs value={currentTab} onChange={(event, value) => onTabChange(event, value)} >
                             <Tab label="Key Details" />
                             <Tab label="Moves" />
                             <Tab label="Prices" />

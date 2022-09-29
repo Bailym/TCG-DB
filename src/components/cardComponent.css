@@ -1,0 +1,37 @@
+/* The entire card */
+#cardContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* The card content left side */
+#cardContent {
+    display: flex;
+    flex-direction: column;
+    padding:0.5rem 1rem;
+    order: 2
+}
+
+/* The card image right side */
+#cardImg {
+    width: 100%;
+    order: 1;
+}
+
+#cardName {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+
+}
+
+#cardNumber {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+
+}
+
+#cardRarity {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+#cardArtist {
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+}
