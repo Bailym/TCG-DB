@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CardComponent from '../../components/cardComponent';
+import CardComponent from '../../components/CardComponent/CardComponent';
 import { Grid, IconButton, Container, Typography } from '@mui/material';
 import { useLocation } from 'react-router-dom'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
