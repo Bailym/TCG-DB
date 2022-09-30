@@ -15,6 +15,7 @@ function CardDialog(props) {
     useEffect(() => {
         //when the component recieves card props
         if (props.card.attacks != null) {
+            console.log(props.card)
             //create a list item for each attack. Create an avatar for each attack cost.
             let attacksComponents = []
             attacksComponents = props.card.attacks.map(attack =>
@@ -73,70 +74,75 @@ function CardDialog(props) {
     }
 
     return (
-        <Dialog open={props.open}  id="dialog" onClose={props.onClose}>
+        <Dialog open={props.open} id="dialog" onClose={props.onClose}>
             <DialogTitle>{props.card.name + " - " + props.card.number}</DialogTitle>
             <DialogContent>
-                <TabContext value={currentTab.toString()}>
-                    <Tabs value={currentTab} onChange={(event, value) => onTabChange(event, value)} >
-                        <Tab label="Key Details" />
-                        <Tab label="Moves" />
-                        <Tab label="Prices" />
-                    </Tabs>
-                    <TabPanel value={"0"} index={0}>
-                        <List>
-                            <ListItem>
-                                <ListItemText>
-                                    <Typography variant="body1">{"Card Type: " + props.card.supertype}</Typography>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    <Typography variant="body1">{"HP: " + props.card.hp}</Typography>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    <Typography variant="body1">{"Description:  " + props.card.flavorText}</Typography>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    {props.card.types ? <Typography variant="body1">{"Type: " + props.card.types[0]}</Typography> : null}
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    <Typography variant="body1">{"Evolves From: " + props.card.evolvesFrom}</Typography>
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    {props.card.subtypes ? <Typography variant="body1">{"Sub Type: " + props.card.subtypes[0]}</Typography> : null}
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    {props.card.level ? <Typography variant="body1">{"Level: " + props.card.level}</Typography> : <Typography variant="body1">{"Level: N/A"}</Typography>}
-                                </ListItemText>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemText>
-                                    <Typography variant="body1">{"Rarity: " + props.card.rarity}</Typography>
-                                </ListItemText>
-                            </ListItem>
-                        </List>
-                    </TabPanel>
-                    <TabPanel value={"1"} index={1}>
-                        <List>
-                            {attacksComponents}
-                        </List>
-                    </TabPanel>
-                    <TabPanel value={"2"} index={2}>
-                        <List>
-                            {priceComponents}
-                        </List>
-                    </TabPanel>
-                </TabContext>
+                {props.card.name ?
+                    <TabContext value={currentTab.toString()}>
+                        <Tabs value={currentTab} onChange={(event, value) => onTabChange(event, value)} >
+                            <Tab label="Key Details" />
+                            <Tab label="Moves" />
+                            <Tab label="Prices" />
+                        </Tabs>
+                        <TabPanel value={"0"} index={0}>
+                            <List>
+                                <ListItem>
+                                    {props.card.images.large ? <img id="largeCardArt" src={props.card.images.large} alt={props.card.name + props.card.number}></img> : null}
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        <Typography variant="body1">{"Card Type: " + props.card.supertype}</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        <Typography variant="body1">{"HP: " + props.card.hp}</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        <Typography variant="body1">{props.card.flavorText ? "Description:  " + props.card.flavorText : "Description: None"}</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        {props.card.types ? <Typography variant="body1">{"Type: " + props.card.types[0]}</Typography> : null}
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        <Typography variant="body1">{"Evolves From: " + props.card.evolvesFrom}</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        {props.card.subtypes ? <Typography variant="body1">{"Sub Type: " + props.card.subtypes[0]}</Typography> : null}
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        {props.card.level ? <Typography variant="body1">{"Level: " + props.card.level}</Typography> : <Typography variant="body1">{"Level: N/A"}</Typography>}
+                                    </ListItemText>
+                                </ListItem>
+                                <ListItem>
+                                    <ListItemText>
+                                        <Typography variant="body1">{"Rarity: " + props.card.rarity}</Typography>
+                                    </ListItemText>
+                                </ListItem>
+                            </List>
+                        </TabPanel>
+                        <TabPanel value={"1"} index={1}>
+                            <List>
+                                {attacksComponents}
+                            </List>
+                        </TabPanel>
+                        <TabPanel value={"2"} index={2}>
+                            <List>
+                                {priceComponents}
+                            </List>
+                        </TabPanel>
+                    </TabContext>
+                    : null}
             </DialogContent>
             <DialogActions>
                 <Button autoFocus onClick={props.onClose}>Back</Button>
